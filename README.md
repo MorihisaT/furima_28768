@@ -51,13 +51,11 @@
 | house_number  | string     | null: false                    |
 | building_name | string     |                                |
 | phone_number  | string     | null: false                    |
-| user          | references | null: false, foreign_key: true |
-| item          | references | null: false, foreign_key: true |
+| order         | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :user
-- belongs_to :item
+- belongs_to :order
 
 ## orders
 
@@ -70,3 +68,4 @@
 
 - belongs_to :user
 - belongs_to :item
+- has_one :address
