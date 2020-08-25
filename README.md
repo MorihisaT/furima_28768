@@ -18,13 +18,13 @@
 
 - has_many :items
 - has_many :addresses
-- has_many :orders
+- has_many :transactions
 
 ## itemsテーブル
 
 | Column        | Type       | Options                        |
 |-----------    | ---------- | ------------------------------ |
-| image         | string     | null: false                    |
+| image         | test       | null: false                    |
 | name          | string     | null: false                    |
 | discript      | text       | null: false                    |
 | category      | integer    | null: false                    |
@@ -39,7 +39,7 @@
 
 - belongs_to :user
 - has_one :address
-- has_one :order
+- has_one :transaction
 
 ## addresses
 
@@ -51,13 +51,13 @@
 | house_number  | string     | null: false                    |
 | building_name | string     |                                |
 | phone_number  | string     | null: false                    |
-| order         | references | null: false, foreign_key: true |
+| transaction   | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :order
+- belongs_to :transaction
 
-## orders
+## transactions
 
 | Column | Type       | Options                        |
 |------- | ---------- | ------------------------------ |
