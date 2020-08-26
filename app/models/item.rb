@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_time
 
   belongs_to :user
+  has_one_attached :image
 
   validates :image, :name, :discript, :category, :status, :delivery_fee, :area, :delivery_time, presence: true
   validates :category_id, :status_id, :delivery_fee_id, :area_id, :delivery_time_id, numericality: { other_than: 1 }
