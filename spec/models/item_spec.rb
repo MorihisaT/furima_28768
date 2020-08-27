@@ -28,7 +28,7 @@ RSpec.describe Item, type: :model do
     it 'category_idが空では保存できないこと' do
       @item.category_id = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("Category can't be blank", "Category is not a number")
+      expect(@item.errors.full_messages).to include("Category can't be blank", 'Category is not a number')
     end
     it 'category_idが1では登録できないこと' do
       @item.category_id = 1
@@ -38,7 +38,7 @@ RSpec.describe Item, type: :model do
     it 'status_idが空では保存できないこと' do
       @item.status_id = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("Status can't be blank", "Status is not a number")
+      expect(@item.errors.full_messages).to include("Status can't be blank", 'Status is not a number')
     end
     it 'delivery_fee_idが空では保存できないこと' do
       @item.delivery_fee_id = nil
@@ -53,7 +53,7 @@ RSpec.describe Item, type: :model do
     it 'area_idが空では保存できないこと' do
       @item.area_id = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("Area can't be blank", "Area is not a number")
+      expect(@item.errors.full_messages).to include("Area can't be blank", 'Area is not a number')
     end
     it 'area_idが1では登録できないこと' do
       @item.area_id = 1
