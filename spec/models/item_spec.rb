@@ -33,7 +33,7 @@ RSpec.describe Item, type: :model do
     it 'categoryが1では登録できないこと' do
       @item.category_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Category must be other than 1")
+      expect(@item.errors.full_messages).to include('Category must be other than 1')
     end
     it 'statusが空では保存できないこと' do
       @item.status_id = nil
@@ -43,12 +43,12 @@ RSpec.describe Item, type: :model do
     it 'delivery_feeが空では保存できないこと' do
       @item.delivery_fee_id = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("Delivery fee can't be blank", "Delivery fee is not a number")
+      expect(@item.errors.full_messages).to include("Delivery fee can't be blank", 'Delivery fee is not a number')
     end
     it 'delivery_feeが1では登録できないこと' do
       @item.delivery_fee_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Delivery fee must be other than 1")
+      expect(@item.errors.full_messages).to include('Delivery fee must be other than 1')
     end
     it 'areaが空では保存できないこと' do
       @item.area_id = nil
@@ -58,17 +58,17 @@ RSpec.describe Item, type: :model do
     it 'areaが1では登録できないこと' do
       @item.area_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Area must be other than 1")
+      expect(@item.errors.full_messages).to include('Area must be other than 1')
     end
     it 'delivery_timeが空では保存できないこと' do
       @item.delivery_time_id = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("Delivery time can't be blank", "Delivery time is not a number")
+      expect(@item.errors.full_messages).to include("Delivery time can't be blank", 'Delivery time is not a number')
     end
     it 'delivery_timeが1では登録できないこと' do
       @item.delivery_time_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Delivery time must be other than 1")
+      expect(@item.errors.full_messages).to include('Delivery time must be other than 1')
     end
     it 'priceが空では保存できないこと' do
       @item.price = nil
@@ -76,14 +76,14 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include("Price can't be blank")
     end
     it 'priceが299では登録できないこと' do
-      @item.price =299
+      @item.price = 299
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price is out of setting range")
+      expect(@item.errors.full_messages).to include('Price is out of setting range')
     end
     it 'priceが10,000,000では登録できないこと' do
-      @item.price =10000000
+      @item.price = 10_000_000
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price is out of setting range")
+      expect(@item.errors.full_messages).to include('Price is out of setting range')
     end
   end
 end
