@@ -25,37 +25,37 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Discript can't be blank")
     end
-    it 'categoryが空では保存できないこと' do
+    it 'category_idが空では保存できないこと' do
       @item.category_id = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("Category can't be blank")
+      expect(@item.errors.full_messages).to include("Category can't be blank", "Category is not a number")
     end
-    it 'categoryが1では登録できないこと' do
+    it 'category_idが1では登録できないこと' do
       @item.category_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include('Category must be other than 1')
     end
-    it 'statusが空では保存できないこと' do
+    it 'status_idが空では保存できないこと' do
       @item.status_id = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("Status can't be blank")
+      expect(@item.errors.full_messages).to include("Status can't be blank", "Status is not a number")
     end
-    it 'delivery_feeが空では保存できないこと' do
+    it 'delivery_fee_idが空では保存できないこと' do
       @item.delivery_fee_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Delivery fee can't be blank", 'Delivery fee is not a number')
     end
-    it 'delivery_feeが1では登録できないこと' do
+    it 'delivery_fee_idが1では登録できないこと' do
       @item.delivery_fee_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include('Delivery fee must be other than 1')
     end
-    it 'areaが空では保存できないこと' do
+    it 'area_idが空では保存できないこと' do
       @item.area_id = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("Area can't be blank")
+      expect(@item.errors.full_messages).to include("Area can't be blank", "Area is not a number")
     end
-    it 'areaが1では登録できないこと' do
+    it 'area_idが1では登録できないこと' do
       @item.area_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include('Area must be other than 1')
@@ -65,7 +65,7 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Delivery time can't be blank", 'Delivery time is not a number')
     end
-    it 'delivery_timeが1では登録できないこと' do
+    it 'delivery_time_idが1では登録できないこと' do
       @item.delivery_time_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include('Delivery time must be other than 1')
