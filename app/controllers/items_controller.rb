@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :move_to_sign_in, except: [:index, :show]
 
   def index
+    @items = Item.all.order('created_at DESC')
   end
 
   def new
@@ -24,7 +25,7 @@ class ItemsController < ApplicationController
   end
 
   def move_to_sign_in
-    flash[:alert] = "You need to sign in or sign up before continuing."
+    flash[:alert] = 'You need to sign in or sign up before continuing.'
     redirect_to new_user_session_path unless user_signed_in?
   end
 end
