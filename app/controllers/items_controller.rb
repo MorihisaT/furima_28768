@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :move_to_sign_in, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :update]
-  
+
   def index
     @items = Item.all.order('created_at DESC')
   end
@@ -29,8 +29,6 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to item_path(params[:id])
     else
-      # @item = Item.new(item_params)
-      # @item.image = item.image
       render :edit
     end
   end
