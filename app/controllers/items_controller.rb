@@ -39,6 +39,11 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:image, :name, :discript, :category_id, :status_id, :delivery_fee_id, :area_id, :delivery_time_id, :price).merge(user_id: current_user.id)
   end
 
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+  end
+
   def move_to_sign_in
     flash[:alert] = 'You need to sign in or sign up before continuing.'
     redirect_to new_user_session_path unless user_signed_in?
