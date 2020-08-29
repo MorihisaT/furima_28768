@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :items
+  has_many :transactions
 
   with_options presence: true do
     validates :last_name, format: { with: /\A[ぁ-んァ-ン一-龥]/, message: 'full-width characters.' }
