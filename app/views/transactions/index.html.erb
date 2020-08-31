@@ -13,8 +13,8 @@
           <%= "商品説明" %>
         </h2>
         <div class='buy-item-price'>
-          <p class='item-price-text'>¥<%= 999,999,999 %></p>
-          <p class='item-price-sub-text'>（税込）送料込み</p>
+          <p class='item-price-text'>¥<%= @item.price %></p>
+          <p class='item-price-sub-text'>（税込）<%= @item.delivery_fee.name %></p>
         </div>
       </div>
     </div>
@@ -31,7 +31,7 @@
     </div>
     <%# /支払額の表示 %>
 
-    <%= form_with model: @transaction, url: transaction_path, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
+    <%= form_with id: 'charge-form', class: 'transaction-form-wrap', model: @order_address, local: true do |f| %>
     <%# カード情報の入力 %>
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
