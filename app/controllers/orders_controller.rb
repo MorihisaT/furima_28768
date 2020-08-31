@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
   
   def create
     @address_order = AddressOrder.new(postal_code: order_params[:postal_code], area_id: order_params[:area_id], city: order_params[:city], house_number: order_params[:house_number], building_name: order_params[:building_name], phone_number: order_params[:phone_number],item_id: order_params[:item_id], user_id: order_params[:user_id])
-    # if  Order.where(item_id: @order.item_id).nil?
+    # unless  Order.where(item_id: @item.id).exist?
       if @address_order.valid?
         pay_item
         @address_order.save
@@ -15,8 +15,6 @@ class OrdersController < ApplicationController
       else
         render 'index'
       end
-    # else
-    #   render 'index'
     # end
   end
 
