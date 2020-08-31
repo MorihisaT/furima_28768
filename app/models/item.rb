@@ -8,7 +8,7 @@ class Item < ApplicationRecord
 
   belongs_to :user
   has_one_attached :image
-  has_one :transaction
+  has_one :order, class_name: 'Transaction'
 
   validates :image, :name, :discript, :category_id, :status_id, :delivery_fee_id, :area_id, :delivery_time_id, presence: true
   validates :category_id, :status_id, :delivery_fee_id, :area_id, :delivery_time_id, numericality: { other_than: 1 }
