@@ -7,15 +7,14 @@ class OrdersController < ApplicationController
   
   def create
     @address_order = AddressOrder.new(postal_code: order_params[:postal_code], area_id: order_params[:area_id], city: order_params[:city], house_number: order_params[:house_number], building_name: order_params[:building_name], phone_number: order_params[:phone_number],item_id: order_params[:item_id], user_id: order_params[:user_id])
-    # unless  Order.where(item_id: @item.id).exist?
-      if @address_order.valid?
+      if @address_order.valid? && Order.where(item_id: @item.id).nil?
         pay_item
         @address_order.save
         return redirect_to root_path
       else
+        flash[:alert] = "Purchase failed"
         render 'index'
       end
-    # end
   end
 
   private
