@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
   before_action :move_to_sign_in
+  before_action :move_to_index
   before_action :set_item, only: [:index, :create]
+
   def index
     @address_order = AddressOrder.new
   end
@@ -40,5 +42,8 @@ class OrdersController < ApplicationController
     flash[:alert] = 'You need to sign in or sign up before continuing.'
     redirect_to new_user_session_path unless user_signed_in?
   end
-
+  
+  def move_to_index
+    redirect_to root_path if  Item.find(params[:item_id]).user_id == current_user.id || Order.where(item_id: params[:item_id]).exists?
+  end
 end
