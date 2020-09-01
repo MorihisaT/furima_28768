@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-
+  before_action :move_to_sign_in
   before_action :set_item, only: [:index, :create]
   def index
     @address_order = AddressOrder.new
@@ -34,6 +34,11 @@ class OrdersController < ApplicationController
       card: order_params[:token],
       currency:'jpy'
     )
+  end
+
+  def move_to_sign_in
+    flash[:alert] = 'You need to sign in or sign up before continuing.'
+    redirect_to new_user_session_path unless user_signed_in?
   end
 
 end
