@@ -11,7 +11,7 @@ class AddressOrder
     validates :city, :house_number, presence: true
     
   def save
-    order = Order.create(item_id: item_id, user_id: user_id)
-    Address.create(postal_code: postal_code, area_id: area_id, city: city, house_number: house_number, building_name: building_name, phone_number: phone_number, order_id: order.id)
+    order = Order.create(item_id: params[:item_id], user_id: current_user.id)
+    Address.create(postal_code: params[postal_code], area_id: params[area_id], city: params[:city], house_number: params[:house_number], building_name: params[:building_name], phone_number: params[:phone_number], order_id: order.id)
   end
 end
