@@ -18,46 +18,46 @@
 
 - has_many :items
 - has_many :addresses
-- has_many :transactions
+- has_many :orders
 
 ## itemsテーブル
 
-| Column        | Type       | Options                        |
-|-----------    | ---------- | ------------------------------ |
-| image         | test       | null: false                    |
-| name          | string     | null: false                    |
-| discript      | text       | null: false                    |
-| category      | integer    | null: false                    |
-| status        | integer    | null: false                    |
-| delivery_fee  | integer    | null: false                    |
-| area          | integer    | null: false                    |
-| delivery_time | integer    | null: false                    |
-| price         | integer    | null: false                    |
-| user          | references | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+|----------------- | ---------- | ------------------------------ |
+| image            | test       | null: false                    |
+| name             | string     | null: false                    |
+| discript         | text       | null: false                    |
+| category_id      | integer    | null: false                    |
+| status_id        | integer    | null: false                    |
+| delivery_fee_id  | integer    | null: false                    |
+| area_id          | integer    | null: false                    |
+| delivery_time_id | integer    | null: false                    |
+| price            | integer    | null: false                    |
+| user             | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - has_one :address
-- has_one :transaction
+- has_one :order
 
 ## addresses
 
 | Column        | Type       | Options                        |
 |-----------    | ---------- | ------------------------------ |
 | postal_code   | string     | null: false                    |
-| prefecture    | integer    | null: false                    |
+| area_id       | integer    | null: false                    |
 | city          | string     | null: false                    |
 | house_number  | string     | null: false                    |
 | building_name | string     |                                |
 | phone_number  | string     | null: false                    |
-| transaction   | references | null: false, foreign_key: true |
+| order         | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :transaction
+- belongs_to :order
 
-## transactions
+## orders
 
 | Column | Type       | Options                        |
 |------- | ---------- | ------------------------------ |
