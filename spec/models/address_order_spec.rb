@@ -6,7 +6,7 @@ RSpec.describe AddressOrder, type: :model do
       @address_order = FactoryBot.build(:address_order)
     end
 
-    it 'postal_code,area_id,city,house_number,building_name,phone_numberが存在すれば登録できること' do
+    it 'postal_code,area_id,city,house_number,building_name,phone_number、tokenが存在すれば登録できること' do
       expect(@address_order).to be_valid
     end
     it 'building_nameが空でも登録できること' do
@@ -57,6 +57,11 @@ RSpec.describe AddressOrder, type: :model do
       @address_order.phone_number = '123412341234'
       @address_order.valid?
       expect(@address_order.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
+    end
+    it 'tokenが空では登録できないこと' do
+      @address_order.token = nil
+      @address_order.valid?
+      expect(@address_order.errors.full_messages).to include("Token can't be blank")
     end
   end
 end
